@@ -1,0 +1,142 @@
+
+<!DOCTYPE html>
+<html lang="en" data-theme="auto">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>UglyDrone</title>
+    <meta name="description" content="UglyDrone — rugged, modular platform" />
+    <style>
+      :root{
+        --bg: #ffffff;
+        --fg: #0f172a;
+        --muted: #475569;
+        --card: #f8fafc;
+        --accent: #0ea5e9;
+        --border: #e2e8f0;
+        --shadow: 0 10px 30px rgba(2,6,23,.06), 0 2px 8px rgba(2,6,23,.04);
+      }
+      /* Dark theme variables */
+      :root[data-theme="dark"]{
+        --bg: #0b0f1a;     /* near-black blue */
+        --fg: #e6edf3;     /* light slate */
+        --muted: #9aa4b2;
+        --card: #121827;
+        --accent: #38bdf8;
+        --border: #1f2937;
+        --shadow: 0 10px 30px rgba(0,0,0,.35), 0 2px 8px rgba(0,0,0,.25);
+      }
+      /* Respect system preference if user hasn't chosen */
+      @media (prefers-color-scheme: dark){
+        :root[data-theme="auto"]{
+          --bg: #0b0f1a;
+          --fg: #e6edf3;
+          --muted: #9aa4b2;
+          --card: #121827;
+          --accent: #38bdf8;
+          --border: #1f2937;
+          --shadow: 0 10px 30px rgba(0,0,0,.35), 0 2px 8px rgba(0,0,0,.25);
+        }
+      }
+      *{box-sizing:border-box}
+      html,body{height:100%}
+      body{
+        margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+        color:var(--fg); background:var(--bg);
+        display:flex; flex-direction:column;
+        transition: background .25s ease, color .25s ease;
+      }
+      .container{max-width:900px; margin:0 auto; padding:48px 20px 20px}
+      header{display:flex; align-items:center; justify-content:center; padding-top:20px; position:relative}
+      .logo-wrap{display:grid; place-items:center;}
+      .logo{width:min(320px, 70vw); height:auto; display:block; filter: drop-shadow(0 6px 12px rgba(0,0,0,.12));}
+      .theme-toggle{
+        position:absolute; right:10px; top:10px;
+        background:var(--card); border:1px solid var(--border); color:var(--fg);
+        border-radius:999px; padding:8px 12px; cursor:pointer; font-size:.9rem;
+        box-shadow: var(--shadow);
+      }
+      .card{
+        background:var(--card); border:1px solid var(--border); border-radius:20px; padding:28px; box-shadow:var(--shadow);
+      }
+      .title{font-size:clamp(28px, 4vw, 40px); font-weight:800; letter-spacing:-.02em; text-align:center; margin:10px 0 6px}
+      .subtitle{color:var(--muted); text-align:center; margin:0 0 22px}
+      main{display:grid; gap:28px; margin-top:26px}
+      .textbox{line-height:1.7; font-size:1rem}
+      footer{margin-top:auto; border-top:1px solid var(--border); background:var(--card)}
+      .footer-inner{max-width:900px; margin:0 auto; padding:26px 20px; display:grid; gap:12px}
+      .contact-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px}
+      .contact-item{background:var(--bg); border:1px solid var(--border); border-radius:14px; padding:16px; box-shadow:var(--shadow); color:var(--fg)}
+      .label{font-weight:700; margin-bottom:6px}
+      a{color:var(--accent); text-decoration:none}
+      a:hover{text-decoration:underline}
+      .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header aria-label="UglyDrone logo">
+        <button class="theme-toggle" id="themeBtn" aria-label="Toggle theme">Toggle theme</button>
+        <div class="logo-wrap">
+          <img class="logo" src="assets/logo.png" alt="UglyDrone logo" />
+          <h1 class="title">UGLYDRONE</h1>
+          <p class="subtitle">Rugged • Modular • Ready</p>
+        </div>
+      </header>
+      <main>
+        <section class="card" aria-labelledby="about-title">
+          <h2 id="about-title" class="sr-only">About</h2>
+          <div class="textbox">
+            <p>
+              UglyDrone is a rugged, modular platform for building drones. It is designed to be easy to use, easy to modify, and easy to repair.
+            </p>
+            <p>
+              It is modular, highly field-configurable, and can be used for a variety of applications—from a simple FPV drone with a loitering payload to an autonomous aerial vehicle with complex missions utilizing AI and computer vision.
+            </p>
+            <p>Drones can be stacked together to form a multi-drone system, which can be deployed as a containerized unit from various platforms: aerial, land, or sea.</p>
+            <p>With modern mesh radio technology from TenetaLabs®, a drone constellation can operate autonomously, splitting missions and providing intelligence to each other.</p>
+          </div>
+        </section>
+      </main>
+    </div>
+    <footer>
+      <div class="footer-inner">
+        <strong>Contact</strong>
+        <div class="contact-grid">
+          <div class="contact-item">
+            <div class="label">Email</div>
+            <a href="mailto:hello@uglydrone.com">hello@uglydrone.com</a>
+          </div>
+          <div class="contact-item">
+            <div class="label">Address</div>
+            <div>Florida, United States of America</div>
+          </div>
+                      <!--
+
+          <div class="contact-item">
+            <div class="label">Social</div>
+            <div>
+              <a href="#">Twitter</a> • <a href="#">LinkedIn</a> • <a href="#">GitHub</a>
+            </div>
+            -->
+        </div>
+        <div style="color:var(--muted); font-size:.9rem; margin-top:6px">© <span id="year"></span> UglyDrone. All rights reserved.</div>
+      </div>
+      <script>
+        document.getElementById('year').textContent=new Date().getFullYear();
+        const root = document.documentElement;
+        const btn = document.getElementById('themeBtn');
+        const saved = localStorage.getItem('theme');
+        if(saved){ root.setAttribute('data-theme', saved); }
+        btn.addEventListener('click', () => {
+          const curr = root.getAttribute('data-theme') || 'auto';
+          const next = curr === 'dark' ? 'light' : (curr === 'light' ? 'auto' : 'dark');
+          root.setAttribute('data-theme', next);
+          localStorage.setItem('theme', next);
+          btn.textContent = `Theme: ${next}`;
+        });
+        btn.textContent = `Theme: ${root.getAttribute('data-theme')}`;
+      </script>
+    </footer>
+  </body>
+</html>
