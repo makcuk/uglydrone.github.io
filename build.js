@@ -235,7 +235,7 @@ function markdownToHtml(md) {
 }
 
 const SITE_URL = 'https://uglydrone.com';
-const DEFAULT_IMAGE = 'https://github.com/UglyDrone/Drone-Models-3d-print-ready-parts/raw/main/Drone/UglyDrone%20--%20Main-light.svg';
+const DEFAULT_IMAGE = 'assets/og-image.png';
 
 /**
  * Normalizes relative URLs to absolute URLs using SITE_URL
@@ -358,11 +358,11 @@ function applyLayout(template, { title, content, root, meta_tags = '', activeBlo
 console.log('Compiling about.html...');
 const aboutContent = fs.readFileSync(ABOUT_CONTENT_PATH, 'utf-8');
 const compiledAbout = applyLayout(layoutTemplate, {
-  title: 'About — UglyDrone',
+  title: 'About UglyDrone — Rugged, Modular, Ready Platform',
   content: aboutContent,
   root: './',
   meta_tags: generateMetaTags({
-    title: 'About — UglyDrone',
+    title: 'About UglyDrone — Rugged, Modular, Ready Platform',
     description: 'About UglyDrone — rugged, modular platform',
     url: 'about.html',
     imageUrl: DEFAULT_IMAGE,
@@ -449,11 +449,11 @@ if (fs.existsSync(POSTS_DIR)) {
     `;
     
     const compiledPostPage = applyLayout(layoutTemplate, {
-      title: `${postTitle} — UglyDrone Blog`,
+      title: `${postTitle} — UglyDrone Rugged & Modular Drone Blog`,
       content: postPageContent,
       root: '../',
       meta_tags: generateMetaTags({
-        title: `${postTitle} — UglyDrone Blog`,
+        title: `${postTitle} — UglyDrone Rugged & Modular Drone Blog`,
         description: postDesc,
         url: `posts/${postBaseName}.html`,
         imageUrl: postImage,
@@ -512,11 +512,11 @@ if (postsList.length === 0) {
 }
 
 const compiledIndex = applyLayout(layoutTemplate, {
-  title: 'UglyDrone Blog — Rugged, Modular, Ready',
+  title: 'UglyDrone Blog — Rugged, Modular, Ready Drone Platform',
   content: feedContent,
   root: './',
   meta_tags: generateMetaTags({
-    title: 'UglyDrone Blog — Rugged, Modular, Ready',
+    title: 'UglyDrone Blog — Rugged, Modular, Ready Drone Platform',
     description: 'UglyDrone — rugged, modular platform',
     url: 'index.html',
     imageUrl: DEFAULT_IMAGE,
