@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>UglyDrone Blog — Rugged, Modular, Ready</title>
+    <title>Multimodal Swarm Terminology — UglyDrone Blog</title>
     <meta name="description" content="UglyDrone — rugged, modular platform" />
     <style>
       :root{
@@ -140,25 +140,24 @@
       <header aria-label="UglyDrone logo">
         <button class="theme-toggle" id="themeBtn" aria-label="Toggle theme">Toggle theme</button>
         <div class="logo-wrap">
-          <img class="logo" src="./assets/logo.png" alt="UglyDrone logo" />
+          <img class="logo" src="../assets/logo.png" alt="UglyDrone logo" />
           <h1 class="title">UGLYDRONE</h1>
           <p class="subtitle">Rugged • Modular • Ready</p>
         </div>
         <nav class="nav-bar">
-          <a href="./index.html" class="nav-link active" id="nav-blog">Blog</a>
-          <a href="./about.html" class="nav-link " id="nav-about">About</a>
+          <a href="../index.html" class="nav-link active" id="nav-blog">Blog</a>
+          <a href="../about.html" class="nav-link " id="nav-about">About</a>
         </nav>
       </header>
       <main>
-        <div class="blog-feed">
-      <article class="card post-card" aria-labelledby="title-060320261">
+        
+      <a href="../index.html" class="back-link">← Back to Blog</a>
+      <article class="card post-content" aria-labelledby="post-title">
         <header class="post-header">
-          <h2 id="title-060320261" class="post-title">
-            <a href="posts/060320261.html" class="post-title-link">Multimodal Swarm Terminology</a>
-          </h2>
+          <h1 id="post-title" class="post-title">Multimodal Swarm Terminology</h1>
           <div class="post-meta">2026-06-03</div>
         </header>
-        <div class="textbox post-preview">
+        <div class="textbox">
           <h2>Intent</h2>
 <p><strong>Intent</strong> is a desired outcome expressed by a human, organization, AI system, or another mission sponsor.</p>
 <p>Intent describes <strong>what should be achieved</strong>, not how.</p>
@@ -168,33 +167,152 @@
 <li style="margin-bottom: 8px;">Find a missing child</li>
 <li style="margin-bottom: 8px;">Inspect the bridge</li>
 <li style="margin-bottom: 8px;">Deliver medical supplies</li>
+<li style="margin-bottom: 8px;">Maintain communications coverage</li>
+<li style="margin-bottom: 8px;">Produce 500 server chassis</li>
 </ul>
+<p>An intent may include constraints such as budget, time, location, risk tolerance, and priority.</p>
+<h2>Mission</h2>
+<p>A <strong>Mission</strong> is a formalized and executable representation of intent.</p>
+<p>A mission translates desired outcomes into objectives, constraints, success criteria, resource requirements, and execution plans.</p>
+<p>A mission may contain multiple objectives and contingency plans.</p>
+<p>Examples:</p>
+<ul style="margin: 10px 0; padding-left: 20px; line-height: 1.7;">
+<li style="margin-bottom: 8px;">Search Area Alpha for a missing child using thermal and visual assets</li>
+<li style="margin-bottom: 8px;">Survey 20 km of power lines and report anomalies</li>
+<li style="margin-bottom: 8px;">Produce and deliver 500 server chassis before Friday</li>
+</ul>
+<p>A mission is the primary unit of orchestration.</p>
+<h2>Objective</h2>
+<p>An <strong>Objective</strong> is a measurable outcome within a mission.</p>
+<p>Objectives define success conditions.</p>
+<p>Examples:</p>
+<ul style="margin: 10px 0; padding-left: 20px; line-height: 1.7;">
+<li style="margin-bottom: 8px;">Search 95% of Area Alpha</li>
+<li style="margin-bottom: 8px;">Identify all vehicles within the perimeter</li>
+<li style="margin-bottom: 8px;">Deliver supplies to Location Bravo</li>
+</ul>
+<p>A mission usually contains multiple objectives.</p>
+<h2>Task</h2>
+<p>A <strong>Task</strong> is a specific action assigned to a participant.</p>
+<p>Tasks are executable units of work.</p>
+<p>Examples:</p>
+<ul style="margin: 10px 0; padding-left: 20px; line-height: 1.7;">
+<li style="margin-bottom: 8px;">Fly waypoint route A</li>
+<li style="margin-bottom: 8px;">Inspect camera feed</li>
+<li style="margin-bottom: 8px;">Machine Part #42</li>
+<li style="margin-bottom: 8px;">Establish relay link</li>
+</ul>
+<p>Tasks are generated from mission objectives.</p>
+<h2>Capability</h2>
+<p>A <strong>Capability</strong> is an ability to perform a class of tasks or achieve a class of outcomes.</p>
+<p>Capabilities are independent of implementation.</p>
+<p>Examples:</p>
+<ul style="margin: 10px 0; padding-left: 20px; line-height: 1.7;">
+<li style="margin-bottom: 8px;">Thermal Search</li>
+<li style="margin-bottom: 8px;">Visual Detection</li>
+<li style="margin-bottom: 8px;">Communications Relay</li>
+<li style="margin-bottom: 8px;">Precision Machining</li>
+<li style="margin-bottom: 8px;">Medical Treatment</li>
+<li style="margin-bottom: 8px;">Route Planning</li>
+</ul>
+<p>Capabilities describe what a participant can do.</p>
+<h2>Asset</h2>
+<p>An <strong>Asset</strong> is a physical or virtual participant that possesses capabilities.</p>
+<p>Examples:</p>
+<ul style="margin: 10px 0; padding-left: 20px; line-height: 1.7;">
+<li style="margin-bottom: 8px;">Drone</li>
+<li style="margin-bottom: 8px;">Ground Robot</li>
+<li style="margin-bottom: 8px;">Human Operator</li>
+<li style="margin-bottom: 8px;">AI Agent</li>
+<li style="margin-bottom: 8px;">Camera Network</li>
+<li style="margin-bottom: 8px;">CNC Machine</li>
+<li style="margin-bottom: 8px;">Datacenter</li>
+</ul>
+<p>Assets provide capabilities.</p>
+<h2>Participant</h2>
+<p>A <strong>Participant</strong> is an asset currently involved in a mission.</p>
+<p>Examples:</p>
+<ul style="margin: 10px 0; padding-left: 20px; line-height: 1.7;">
+<li style="margin-bottom: 8px;">Drone #12</li>
+<li style="margin-bottom: 8px;">Human Search Team Bravo</li>
+<li style="margin-bottom: 8px;">AI Planner Instance 7</li>
+</ul>
+<p>An asset becomes a participant when assigned to a mission.</p>
+<h2>Swarm</h2>
+<p>A <strong>Swarm</strong> is a temporary organization of participants assembled to execute a mission.</p>
+<p>A swarm may contain:</p>
+<ul style="margin: 10px 0; padding-left: 20px; line-height: 1.7;">
+<li style="margin-bottom: 8px;">Humans</li>
+<li style="margin-bottom: 8px;">Robots</li>
+<li style="margin-bottom: 8px;">Vehicles</li>
+<li style="margin-bottom: 8px;">Sensors</li>
+<li style="margin-bottom: 8px;">AI agents</li>
+<li style="margin-bottom: 8px;">External services</li>
+</ul>
+<p>A swarm exists only as long as required by the mission.</p>
+<h2>Capability Provider</h2>
+<p>A <strong>Capability Provider</strong> is an entity that owns or controls assets and makes capabilities available to missions.</p>
+<p>Examples:</p>
+<ul style="margin: 10px 0; padding-left: 20px; line-height: 1.7;">
+<li style="margin-bottom: 8px;">Drone fleet operator</li>
+<li style="margin-bottom: 8px;">Survey company</li>
+<li style="margin-bottom: 8px;">Datacenter</li>
+<li style="margin-bottom: 8px;">Logistics provider</li>
+<li style="margin-bottom: 8px;">Volunteer organization</li>
+</ul>
+<p>Providers may participate in many missions simultaneously.</p>
+<h2>Doctrine</h2>
+<p>A <strong>Doctrine</strong> is a reusable body of operational knowledge describing how a class of problems should be approached.</p>
+<p>Examples:</p>
+<ul style="margin: 10px 0; padding-left: 20px; line-height: 1.7;">
+<li style="margin-bottom: 8px;">Missing Person Search Doctrine</li>
+<li style="margin-bottom: 8px;">Infrastructure Inspection Doctrine</li>
+<li style="margin-bottom: 8px;">Wildfire Monitoring Doctrine</li>
+<li style="margin-bottom: 8px;">Medical Evacuation Doctrine</li>
+</ul>
+<p>Doctrines guide mission generation and adaptation.</p>
+<h2>Mission Planner</h2>
+<p>A <strong>Mission Planner</strong> converts intent into missions.</p>
+<p>Responsibilities include:</p>
+<ul style="margin: 10px 0; padding-left: 20px; line-height: 1.7;">
+<li style="margin-bottom: 8px;">Objective generation</li>
+<li style="margin-bottom: 8px;">Capability selection</li>
+<li style="margin-bottom: 8px;">Resource estimation</li>
+<li style="margin-bottom: 8px;">Risk analysis</li>
+<li style="margin-bottom: 8px;">Contingency planning</li>
+</ul>
+<p>Mission planners may be human, AI, or hybrid.</p>
+<h2>Resource</h2>
+<p>A <strong>Resource</strong> is anything consumed during mission execution.</p>
+<p>Examples:</p>
+<ul style="margin: 10px 0; padding-left: 20px; line-height: 1.7;">
+<li style="margin-bottom: 8px;">Energy</li>
+<li style="margin-bottom: 8px;">Time</li>
+<li style="margin-bottom: 8px;">Bandwidth</li>
+<li style="margin-bottom: 8px;">Money</li>
+<li style="margin-bottom: 8px;">Compute</li>
+<li style="margin-bottom: 8px;">Human attention</li>
+</ul>
+<p>Capabilities consume resources.</p>
+<h2>Settlement</h2>
+<p><strong>Settlement</strong> is the process of accounting for capability consumption and mission execution.</p>
+<p>Settlement may use:</p>
+<ul style="margin: 10px 0; padding-left: 20px; line-height: 1.7;">
+<li style="margin-bottom: 8px;">Currency</li>
+<li style="margin-bottom: 8px;">Credits</li>
+<li style="margin-bottom: 8px;">Internal accounting</li>
+<li style="margin-bottom: 8px;">Smart contracts</li>
+<li style="margin-bottom: 8px;">Tokens</li>
+</ul>
+<p>Settlement is independent from mission execution.</p>
+<h2>Capability Marketplace</h2>
+<p>A <strong>Capability Marketplace</strong> is a system that matches mission requirements with available capability providers.</p>
+<p>The marketplace trades capabilities rather than assets.</p>
+<p>The customer requests outcomes.</p>
+<p>The marketplace finds providers capable of delivering them.</p>
         </div>
-        <a href="posts/060320261.html" class="read-more-btn">Read More →</a>
       </article>
     
-      <article class="card post-card" aria-labelledby="title-052920261">
-        <header class="post-header">
-          <h2 id="title-052920261" class="post-title">
-            <a href="posts/052920261.html" class="post-title-link">Multimodal Swarms: Beyond Drone Swarms</a>
-          </h2>
-          <div class="post-meta">2026-05-29</div>
-        </header>
-        <div class="textbox post-preview">
-          <p>When people hear the term <em>swarm</em>, they often imagine a group of identical drones flying in formation. While this is a useful mental model, it is also limiting.</p>
-<p>I propose a broader concept: the <strong>Multimodal Swarm</strong>.</p>
-<p>A multimodal swarm is a collection of autonomous and semi-autonomous assets that cooperate to achieve a shared mission objective. These assets may include aerial drones, ground robots, marine vehicles, fixed sensors, communications gateways, AI agents, cloud services, and even humans. The defining characteristic is not the type of asset, but its participation in a common mission and information space.</p>
-<p>In this model, a person carrying a handheld radio, a ground rover, a relay drone, and an AI planning system are all members of the same swarm.</p>
-<h2>Shared Awareness</h2>
-<p>Every participant contributes information about itself and its environment.</p>
-<p>Examples include:</p>
-<ul style="margin: 10px 0; padding-left: 20px; line-height: 1.7;">
-<li style="margin-bottom: 8px;">Position and movement</li>
-</ul>
-        </div>
-        <a href="posts/052920261.html" class="read-more-btn">Read More →</a>
-      </article>
-    </div>
       </main>
     </div>
     <footer>
