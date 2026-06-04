@@ -235,6 +235,7 @@ function markdownToHtml(md) {
 }
 
 const SITE_URL = 'https://uglydrone.com';
+const DEFAULT_IMAGE = 'https://github.com/UglyDrone/Drone-Models-3d-print-ready-parts/raw/main/Drone/UglyDrone%20--%20Main-light.svg';
 
 /**
  * Normalizes relative URLs to absolute URLs using SITE_URL
@@ -318,7 +319,7 @@ function generateMetaTags({ title, description, url, imageUrl, type = 'website' 
   const finalTitle = title;
   const finalDesc = description || 'UglyDrone — rugged, modular platform';
   const finalUrl = getAbsoluteUrl(url);
-  const finalImage = getAbsoluteUrl(imageUrl || 'assets/og-image.png');
+  const finalImage = getAbsoluteUrl(imageUrl || DEFAULT_IMAGE);
   
   return [
     `<meta name="description" content="${finalDesc.replace(/"/g, '&quot;')}" />`,
@@ -364,7 +365,7 @@ const compiledAbout = applyLayout(layoutTemplate, {
     title: 'About — UglyDrone',
     description: 'About UglyDrone — rugged, modular platform',
     url: 'about.html',
-    imageUrl: 'assets/og-image.png',
+    imageUrl: DEFAULT_IMAGE,
     type: 'website'
   }),
   activeAbout: 'active'
@@ -415,7 +416,7 @@ if (fs.existsSync(POSTS_DIR)) {
       }
     }
     const postDesc = data.description || getPlainTextSnippet(cleanBody);
-    const postImage = data.image || extractFirstImage(cleanBody) || 'assets/og-image.png';
+    const postImage = data.image || extractFirstImage(cleanBody) || DEFAULT_IMAGE;
     
     // Generate Preview Markdown and compile to HTML
     const previewMd = extractPreview(cleanBody);
@@ -518,7 +519,7 @@ const compiledIndex = applyLayout(layoutTemplate, {
     title: 'UglyDrone Blog — Rugged, Modular, Ready',
     description: 'UglyDrone — rugged, modular platform',
     url: 'index.html',
-    imageUrl: 'assets/og-image.png',
+    imageUrl: DEFAULT_IMAGE,
     type: 'website'
   }),
   activeBlog: 'active'
