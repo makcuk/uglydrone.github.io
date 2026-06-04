@@ -234,14 +234,119 @@ function markdownToHtml(md) {
   return finalHtml;
 }
 
+const SITE_URL = 'https://uglydrone.com';
+
+/**
+ * Normalizes relative URLs to absolute URLs using SITE_URL
+ */
+function getAbsoluteUrl(urlPath) {
+  if (!urlPath) return '';
+  if (urlPath.startsWith('http://') || urlPath.startsWith('https://')) {
+    return urlPath;
+  }
+  
+  let cleanedPath = urlPath;
+  if (cleanedPath.startsWith('../')) {
+    cleanedPath = cleanedPath.slice(3);
+  } else if (cleanedPath.startsWith('./')) {
+    cleanedPath = cleanedPath.slice(2);
+  } else if (cleanedPath.startsWith('/')) {
+    cleanedPath = cleanedPath.slice(1);
+  }
+  
+  return `${SITE_URL}/${cleanedPath}`;
+}
+
+/**
+ * Strips markdown and HTML formatting to get a clean plain text description
+ */
+function getPlainTextSnippet(body, maxLength = 160) {
+  // Strip code blocks completely
+  let text = body.replace(/```[\s\S]*?```/g, '');
+  
+  // Strip HTML tags
+  text = text.replace(/<[^>]*>/g, '');
+  
+  // Convert markdown links [text](url) to just text
+  text = text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '$1');
+  
+  // Convert markdown images ![alt](url) to empty space
+  text = text.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '');
+  
+  // Strip bold/italic markup
+  text = text.replace(/\*\*([^*]+)\*\*/g, '$1');
+  text = text.replace(/\*([^*]+)\*/g, '$1');
+  text = text.replace(/__([^_]+)__/g, '$1');
+  text = text.replace(/_([^_]+)_/g, '$1');
+  
+  // Strip headings markers
+  text = text.replace(/^#+\s+/gm, '');
+  
+  // Strip blockquote markers
+  text = text.replace(/^>\s?/gm, '');
+  
+  // Strip inline code backticks
+  text = text.replace(/`([^`\n]+)`/g, '$1');
+  
+  // Replace multiple spaces/newlines with a single space
+  text = text.replace(/\s+/g, ' ').trim();
+  
+  if (text.length <= maxLength) {
+    return text;
+  }
+  
+  const truncated = text.slice(0, maxLength);
+  const lastSpace = truncated.lastIndexOf(' ');
+  if (lastSpace > 0) {
+    return truncated.slice(0, lastSpace) + '...';
+  }
+  return truncated + '...';
+}
+
+/**
+ * Extracts the first image URL from markdown or returns null
+ */
+function extractFirstImage(body) {
+  const match = body.match(/!\[.*?\]\((.*?)\)/);
+  return match ? match[1] : null;
+}
+
+/**
+ * Generates Open Graph and Twitter Card tags
+ */
+function generateMetaTags({ title, description, url, imageUrl, type = 'website' }) {
+  const finalTitle = title;
+  const finalDesc = description || 'UglyDrone — rugged, modular platform';
+  const finalUrl = getAbsoluteUrl(url);
+  const finalImage = getAbsoluteUrl(imageUrl || 'assets/og-image.png');
+  
+  return [
+    `<meta name="description" content="${finalDesc.replace(/"/g, '&quot;')}" />`,
+    `<!-- Open Graph / Facebook -->`,
+    `<meta property="og:type" content="${type}" />`,
+    `<meta property="og:url" content="${finalUrl}" />`,
+    `<meta property="og:title" content="${finalTitle.replace(/"/g, '&quot;')}" />`,
+    `<meta property="og:description" content="${finalDesc.replace(/"/g, '&quot;')}" />`,
+    `<meta property="og:image" content="${finalImage}" />`,
+    `<meta property="og:site_name" content="UglyDrone" />`,
+    `<!-- Twitter -->`,
+    `<meta name="twitter:card" content="summary_large_image" />`,
+    `<meta name="twitter:url" content="${finalUrl}" />`,
+    `<meta name="twitter:title" content="${finalTitle.replace(/"/g, '&quot;')}" />`,
+    `<meta name="twitter:description" content="${finalDesc.replace(/"/g, '&quot;')}" />`,
+    `<meta name="twitter:image" content="${finalImage}" />`
+  ].join('\n    ');
+}
+
 /**
  * Formats layout placeholders
  */
-function applyLayout(template, { title, content, root, activeBlog = '', activeAbout = '' }) {
+function applyLayout(template, { title, content, root, meta_tags = '', activeBlog = '', activeAbout = '' }) {
   return template
     .replace(/\{\{title\}\}/g, title)
     .replace(/\{\{content\}\}/g, content)
     .replace(/\{\{root\}\}/g, root)
+    .replace(/\{\{meta_tags\}\}/g, meta_tags)
     .replace(/\{\{active_blog\}\}/g, activeBlog)
     .replace(/\{\{active_about\}\}/g, activeAbout);
 }
@@ -255,6 +360,13 @@ const compiledAbout = applyLayout(layoutTemplate, {
   title: 'About — UglyDrone',
   content: aboutContent,
   root: './',
+  meta_tags: generateMetaTags({
+    title: 'About — UglyDrone',
+    description: 'About UglyDrone — rugged, modular platform',
+    url: 'about.html',
+    imageUrl: 'assets/og-image.png',
+    type: 'website'
+  }),
   activeAbout: 'active'
 });
 fs.writeFileSync(ABOUT_OUTPUT_PATH, compiledAbout);
@@ -302,7 +414,8 @@ if (fs.existsSync(POSTS_DIR)) {
         postDate = new Date().toISOString().split('T')[0];
       }
     }
-    const postDesc = data.description || '';
+    const postDesc = data.description || getPlainTextSnippet(cleanBody);
+    const postImage = data.image || extractFirstImage(cleanBody) || 'assets/og-image.png';
     
     // Generate Preview Markdown and compile to HTML
     const previewMd = extractPreview(cleanBody);
@@ -338,6 +451,13 @@ if (fs.existsSync(POSTS_DIR)) {
       title: `${postTitle} — UglyDrone Blog`,
       content: postPageContent,
       root: '../',
+      meta_tags: generateMetaTags({
+        title: `${postTitle} — UglyDrone Blog`,
+        description: postDesc,
+        url: `posts/${postBaseName}.html`,
+        imageUrl: postImage,
+        type: 'article'
+      }),
       activeBlog: 'active'
     });
     
@@ -394,6 +514,13 @@ const compiledIndex = applyLayout(layoutTemplate, {
   title: 'UglyDrone Blog — Rugged, Modular, Ready',
   content: feedContent,
   root: './',
+  meta_tags: generateMetaTags({
+    title: 'UglyDrone Blog — Rugged, Modular, Ready',
+    description: 'UglyDrone — rugged, modular platform',
+    url: 'index.html',
+    imageUrl: 'assets/og-image.png',
+    type: 'website'
+  }),
   activeBlog: 'active'
 });
 
