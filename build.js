@@ -431,7 +431,7 @@ if (fs.existsSync(POSTS_DIR)) {
       title: postTitle,
       date: postDate,
       description: postDesc,
-      previewHtml
+      previewHtml: previewHtml.replace(/src="\.\.\//g, 'src="')
     });
     
     // Generate individual post page content wrapped in styles
