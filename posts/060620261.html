@@ -3,21 +3,21 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>UglyDrone Blog — Rugged, Modular, Ready Drone Platform</title>
-    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico" />
-    <meta name="description" content="UglyDrone — rugged, modular platform" />
+    <title>Rethinking AI Cameras: Why Edge Computing Matters More Than Bigger Models — UglyDrone Rugged & Modular Drone Blog</title>
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+    <meta name="description" content="The last few years have seen tremendous progress in AI vision systems. Cameras that once merely streamed video can now detect people, vehicles, animals,..." />
     <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://uglydrone.com/index.html" />
-    <meta property="og:title" content="UglyDrone Blog — Rugged, Modular, Ready Drone Platform" />
-    <meta property="og:description" content="UglyDrone — rugged, modular platform" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://uglydrone.com/posts/060620261.html" />
+    <meta property="og:title" content="Rethinking AI Cameras: Why Edge Computing Matters More Than Bigger Models — UglyDrone Rugged & Modular Drone Blog" />
+    <meta property="og:description" content="The last few years have seen tremendous progress in AI vision systems. Cameras that once merely streamed video can now detect people, vehicles, animals,..." />
     <meta property="og:image" content="https://uglydrone.com/assets/og-image.png" />
     <meta property="og:site_name" content="UglyDrone" />
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="https://uglydrone.com/index.html" />
-    <meta name="twitter:title" content="UglyDrone Blog — Rugged, Modular, Ready Drone Platform" />
-    <meta name="twitter:description" content="UglyDrone — rugged, modular platform" />
+    <meta name="twitter:url" content="https://uglydrone.com/posts/060620261.html" />
+    <meta name="twitter:title" content="Rethinking AI Cameras: Why Edge Computing Matters More Than Bigger Models — UglyDrone Rugged & Modular Drone Blog" />
+    <meta name="twitter:description" content="The last few years have seen tremendous progress in AI vision systems. Cameras that once merely streamed video can now detect people, vehicles, animals,..." />
     <meta name="twitter:image" content="https://uglydrone.com/assets/og-image.png" />
     <style>
       :root{
@@ -154,26 +154,25 @@
       <header aria-label="UglyDrone logo">
         <button class="theme-toggle" id="themeBtn" aria-label="Toggle theme">Toggle theme</button>
         <div class="logo-wrap">
-          <img class="logo" src="./assets/logo.png" alt="UglyDrone logo" />
+          <img class="logo" src="../assets/logo.png" alt="UglyDrone logo" />
           <h1 class="title">UGLYDRONE</h1>
           <p class="subtitle">Rugged • Modular • Ready</p>
         </div>
         <nav class="nav-bar">
-          <a href="./index.html" class="nav-link active" id="nav-blog">Blog</a>
-          <a href="./about.html" class="nav-link " id="nav-about">About</a>
+          <a href="../index.html" class="nav-link active" id="nav-blog">Blog</a>
+          <a href="../about.html" class="nav-link " id="nav-about">About</a>
           <a href="https://github.com/UglyDrone/Drone-Models-3d-print-ready-parts" class="nav-link" id="nav-github" target="_blank" rel="noopener noreferrer">Github</a>
         </nav>
       </header>
       <main>
-        <div class="blog-feed">
-      <article class="card post-card" aria-labelledby="title-060620261">
+        
+      <a href="../index.html" class="back-link">← Back to Blog</a>
+      <article class="card post-content" aria-labelledby="post-title">
         <header class="post-header">
-          <h2 id="title-060620261" class="post-title">
-            <a href="posts/060620261.html" class="post-title-link">Rethinking AI Cameras: Why Edge Computing Matters More Than Bigger Models</a>
-          </h2>
+          <h1 id="post-title" class="post-title">Rethinking AI Cameras: Why Edge Computing Matters More Than Bigger Models</h1>
           <div class="post-meta">2026-06-06</div>
         </header>
-        <div class="textbox post-preview">
+        <div class="textbox">
           <p>The last few years have seen tremendous progress in AI vision systems. Cameras that once merely streamed video can now detect people, vehicles, animals, infrastructure defects, and even understand complex scenes. At the same time, the industry continues to debate where intelligence should live. Should cameras simply transmit raw video to powerful servers, or should they become intelligent edge devices that process information locally?</p>
 <p>For many practical applications, the answer is increasingly clear: intelligence belongs at the edge.</p>
 <p>Raw video is one of the most expensive forms of data we can transport and process. A single 1080p stream at 30 frames per second contains millions of pixels every second, most of which carry little useful information. Large portions of a scene remain unchanged between frames, and many environments contain long periods where nothing relevant happens at all. Sending every pixel to a cloud server and asking an AI model to repeatedly analyze the entire image is often inefficient from both a networking and computational perspective.</p>
@@ -182,74 +181,41 @@
 <p>Consider a drone monitoring an area. The onboard vision system can detect vehicles, people, boats, roads, and obstacles locally. Instead of continuously transmitting high-bandwidth video to a remote AI service, the drone can publish a compact stream of observations. A higher-level World Model can then reason about behavior, patterns, intentions, and mission objectives using pre-processed information. The expensive visual processing occurs once, at the edge, while the strategic reasoning layer operates on a significantly smaller and richer dataset.</p>
 <p>This philosophy scales particularly well in distributed systems. A fleet of drones, robots, vehicles, or smart cameras can each perform local perception and then contribute structured knowledge to a shared operational picture. Bandwidth requirements decrease, latency improves, and the overall system becomes more resilient when connectivity is limited or intermittent.</p>
 <p>The messaging layer plays a critical role in this architecture. The ongoing discussion between MQTT and Zenoh often frames them as competing technologies, but practical edge systems should embrace both. MQTT remains one of the most mature, widely deployed, and operationally proven protocols in industrial IoT. Its ecosystem, tooling, and broker implementations make it an excellent choice for telemetry, commands, events, and integration with existing infrastructure.</p>
+<p>Zenoh introduces capabilities that are particularly attractive for distributed robotics and autonomous systems. Its data-centric design, peer-to-peer communication model, and support for dynamic network topologies make it well suited for environments where connectivity changes frequently and centralized infrastructure may not always be available.</p>
+<p>Rather than choosing a single winner, future edge platforms should support both. MQTT provides compatibility with existing cloud and enterprise ecosystems, while Zenoh offers powerful options for decentralized communication and robotic networks. The most flexible systems will allow applications to use whichever transport best fits their operational requirements.</p>
+<p>As AI hardware continues to improve, the trend toward intelligent edge processing is likely to accelerate. Cameras will evolve from video sources into perception nodes. Drones will become distributed sensing platforms. World Models will increasingly consume structured observations rather than raw pixels. Networks will transport knowledge instead of images.</p>
+<p>The future of AI vision is not simply about building larger models. It is about moving intelligence closer to the source of data, extracting meaning efficiently, and allowing every layer of the system—from the camera to the cloud—to focus on what it does best.</p>
+<h2>The Practical Architecture</h2>
+<p>A practical edge AI camera pipeline may look like this:</p>
+<pre><code class="language-text">Camera Sensor
+      │
+      ▼
+ Edge NPU Inference
+      │
+      ├── Object Detection
+      ├── Tracking
+      ├── Classification
+      └── Scene Understanding
+      │
+      ▼
+ Structured Events
+      │
+      ├── MQTT
+      ├── Zenoh
+      └── Local APIs
+      │
+      ▼
+ Fleet Coordination / World Model
+      │
+      ▼
+ Mission Planning and Decision Making</code></pre>
+<p>In this architecture, video remains available for operators, debugging, recording, and remote observation. However, video is no longer the primary source of intelligence. Intelligence is generated at the edge and distributed as structured knowledge.</p>
+<p>The result is lower bandwidth consumption, lower latency, improved resilience, reduced cloud costs, and systems that continue operating even when connectivity becomes unreliable.</p>
+<p>As edge NPUs become more powerful and efficient, this architecture will increasingly become the default rather than the exception.</p>
+<p>UglyDrone team uses RK3588-based Edge camera, and you can build your own <a href="https://github.com/UglyDrone/uglycam">UglyCam</a>.</p>
         </div>
-        <a href="posts/060620261.html" class="read-more-btn">Read More →</a>
       </article>
     
-      <article class="card post-card" aria-labelledby="title-060520261">
-        <header class="post-header">
-          <h2 id="title-060520261" class="post-title">
-            <a href="posts/060520261.html" class="post-title-link">Principle</a>
-          </h2>
-          <div class="post-meta">2026-06-05</div>
-        </header>
-        <div class="textbox post-preview">
-          <p>Intent defines what should happen.</p>
-<p>Mission defines how success is measured.</p>
-<p>Capabilities define what can be done.</p>
-<p>Assets provide capabilities.</p>
-<p>Participants execute tasks.</p>
-<p>Swarms coordinate participants.</p>
-<p>Resources enable execution.</p>
-<p>Settlement accounts for value exchange.</p>
-        </div>
-        <a href="posts/060520261.html" class="read-more-btn">Read More →</a>
-      </article>
-    
-      <article class="card post-card" aria-labelledby="title-060320261">
-        <header class="post-header">
-          <h2 id="title-060320261" class="post-title">
-            <a href="posts/060320261.html" class="post-title-link">Multimodal Swarm Terminology</a>
-          </h2>
-          <div class="post-meta">2026-06-03</div>
-        </header>
-        <div class="textbox post-preview">
-          <h2>Intent</h2>
-<p><strong>Intent</strong> is a desired outcome expressed by a human, organization, AI system, or another mission sponsor.</p>
-<p>Intent describes <strong>what should be achieved</strong>, not how.</p>
-<p>Intent may be vague, incomplete, or ambiguous.</p>
-<p>Examples:</p>
-<ul style="margin: 10px 0; padding-left: 20px; line-height: 1.7;">
-<li style="margin-bottom: 8px;">Find a missing child</li>
-<li style="margin-bottom: 8px;">Inspect the bridge</li>
-<li style="margin-bottom: 8px;">Deliver medical supplies</li>
-</ul>
-        </div>
-        <a href="posts/060320261.html" class="read-more-btn">Read More →</a>
-      </article>
-    
-      <article class="card post-card" aria-labelledby="title-052920261">
-        <header class="post-header">
-          <h2 id="title-052920261" class="post-title">
-            <a href="posts/052920261.html" class="post-title-link">Multimodal Swarms: Beyond Drone Swarms</a>
-          </h2>
-          <div class="post-meta">2026-05-29</div>
-        </header>
-        <div class="textbox post-preview">
-          <p>When people hear the term <em>swarm</em>, they often imagine a group of identical drones flying in formation. While this is a useful mental model, it is also limiting.</p>
-<p>I propose a broader concept: the <strong>Multimodal Swarm</strong>.</p>
-<p>A multimodal swarm is a collection of autonomous and semi-autonomous assets that cooperate to achieve a shared mission objective. These assets may include aerial drones, ground robots, marine vehicles, fixed sensors, communications gateways, AI agents, cloud services, and even humans. The defining characteristic is not the type of asset, but its participation in a common mission and information space.</p>
-<p>In this model, a person carrying a handheld radio, a ground rover, a relay drone, and an AI planning system are all members of the same swarm.</p>
-<h2>Shared Awareness</h2>
-<p>Every participant contributes information about itself and its environment.</p>
-<p>Examples include:</p>
-<ul style="margin: 10px 0; padding-left: 20px; line-height: 1.7;">
-<li style="margin-bottom: 8px;">Position and movement</li>
-</ul>
-        </div>
-        <a href="posts/052920261.html" class="read-more-btn">Read More →</a>
-      </article>
-    </div>
       </main>
     </div>
     <footer>
