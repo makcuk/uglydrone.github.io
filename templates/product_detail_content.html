@@ -1,0 +1,238 @@
+<a href="{{root}}products.html" class="back-link">← Back to Products</a>
+
+<article class="card" aria-labelledby="product-title" style="padding: 32px;">
+  <!-- Hero Section -->
+  <div class="product-hero">
+    <div class="product-hero-info">
+      <span class="product-tag">Smart PDU</span>
+      <h1 id="product-title" style="font-size: clamp(28px, 4vw, 42px); font-weight: 800; letter-spacing: -0.02em; margin: 0 0 10px 0;">UglyDrone PDU-12S</h1>
+      <p style="font-size: 1.1rem; line-height: 1.6; color: var(--muted); margin: 0 0 20px 0;">
+        UglyDrone PDU-12S is a smart power distribution unit for UAVs, rovers, and autonomous robotic platforms operating from a 12S / 48V battery bus. It provides protected 12V and 5V power rails, switched high-side outputs for mission payloads, integrated voltage and current monitoring, and intelligent power sequencing.
+      </p>
+      <p style="font-size: 1rem; line-height: 1.6; color: var(--fg); margin: 0 0 20px 0;">
+        The unit enables autonomous systems to selectively power companion computers, sensors, communications, and payloads only when required, improving endurance, reliability, and serviceability.
+      </p>
+      
+      <div class="btn-group">
+        <a href="https://www.ebay.com/itm/327255198036" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+          Order on eBay
+        </a>
+        <a href="{{root}}assets/UglyDrone_PDU-12S_datasheet_DroneCAN.pdf" target="_blank" class="btn btn-secondary">
+          Download PDF Datasheet
+        </a>
+      </div>
+    </div>
+    
+    <div class="product-hero-img-wrap">
+      <img class="product-hero-img" src="{{root}}assets/images/pdu-12s/image9.png" alt="UglyDrone PDU-12S Smart Power Distribution Unit" />
+    </div>
+  </div>
+
+  <hr style="border: 0; border-top: 1px solid var(--border); margin: 40px 0;" />
+
+  <!-- Features Section -->
+  <section aria-labelledby="sec-features">
+    <h2 id="sec-features" style="font-size: 1.8rem; font-weight: 800; letter-spacing: -0.01em; margin-bottom: 24px;">Key Features</h2>
+    <div class="features-grid">
+      <div class="feature-item">
+        <div class="feature-title">Easy Integration</div>
+        <p class="feature-desc">Simple to integrate into any platform with direct support for GPIO, UART, and DroneCAN.</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-title">High-Side Switching</div>
+        <p class="feature-desc">Dedicated channel switching control for precise power management of payloads.</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-title">Fused 48V Rail</div>
+        <p class="feature-desc">Provides a fused high-voltage bus protection layer to prevent catastrophic power failures.</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-title">Transit Efficiency</div>
+        <p class="feature-desc">Specially designed for airframes and robots to efficiently disable heavy payloads during transit segments.</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-title">Autopilot Integration</div>
+        <p class="feature-desc">Seamless integration with ArduPilot or PX4 firmware as relay/hardpoint entities.</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-title">Full Telemetry</div>
+        <p class="feature-desc">Real-time voltage and current monitoring on all main rails for battery management and load profiling.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr style="border: 0; border-top: 1px solid var(--border); margin: 40px 0;" />
+
+  <!-- Pinout Section -->
+  <section aria-labelledby="sec-pinout" style="margin-bottom: 40px;">
+    <h2 id="sec-pinout" style="font-size: 1.8rem; font-weight: 800; letter-spacing: -0.01em; margin-bottom: 16px;">Pinout Diagram</h2>
+    <p style="color: var(--muted); margin-bottom: 24px;">Refer to the following diagram for the wiring specifications and pin layout of the PDU-12S:</p>
+    <div style="background: var(--bg); border: 1px solid var(--border); border-radius: 16px; padding: 20px; text-align: center; box-shadow: var(--shadow);">
+      <img src="{{root}}assets/images/pdu-12s/image2.png" alt="UglyDrone PDU-12S Pinout Diagram" style="max-width: 100%; height: auto; border-radius: 8px;" />
+    </div>
+  </section>
+
+  <!-- Specifications Section -->
+  <section aria-labelledby="sec-specs" style="margin-bottom: 40px;">
+    <h2 id="sec-specs" style="font-size: 1.8rem; font-weight: 800; letter-spacing: -0.01em; margin-bottom: 16px;">Specification</h2>
+    <div class="spec-table-container">
+      <table class="spec-table">
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th>DroneCAN</th>
+            <th>12V Current</th>
+            <th>5V Current</th>
+            <th>12V Switched Channels</th>
+            <th>5V Switched Channels</th>
+            <th>48V Switched Channels</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>PDU-12S</strong></td>
+            <td>No</td>
+            <td>5A</td>
+            <td>5A</td>
+            <td>3</td>
+            <td>2</td>
+            <td>1</td>
+          </tr>
+          <tr>
+            <td><strong>PDU-12S Pro</strong></td>
+            <td>Yes</td>
+            <td>5A</td>
+            <td>5A</td>
+            <td>3</td>
+            <td>2</td>
+            <td>1</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Usage Example Section -->
+  <section aria-labelledby="sec-usage" style="margin-bottom: 40px;">
+    <h2 id="sec-usage" style="font-size: 1.8rem; font-weight: 800; letter-spacing: -0.01em; margin-bottom: 16px;">Usage Example</h2>
+    <div style="background: var(--bg); border: 1px solid var(--border); border-radius: 16px; padding: 20px; text-align: center; box-shadow: var(--shadow); margin-bottom: 24px;">
+      <img src="{{root}}assets/images/pdu-12s/image5.png" alt="UglyDrone PDU-12S Usage Block Diagram" style="max-width: 100%; height: auto; border-radius: 8px;" />
+    </div>
+    <div class="textbox" style="color: var(--muted); font-size: 0.95rem; line-height: 1.7; display: grid; gap: 14px;">
+      <p>
+        The <strong>UglyDrone PDU-12S</strong> enables mission-aware power management by integrating with an ArduPilot or PX4 flight controller through configurable GPIO outputs.
+      </p>
+      <p>
+        During mission planning, GPIO-controlled outputs can be assigned to power groups such as companion computers, AI accelerators, cameras, SATCOM terminals, sensors, or other payloads. At mission start, the PDU powers all required subsystems, allowing sufficient time for system initialization, GNSS acquisition, telemetry establishment, and payload self-tests. Once the vehicle reaches the long-range transit segment, non-essential equipment is automatically powered down, leaving only the flight controller and critical avionics operational to maximize endurance.
+      </p>
+      <p>
+        At predefined mission waypoints or in response to mission events, the autopilot can selectively restore power to communications or AI payloads for telemetry synchronization, route updates, environmental assessment, or autonomous target recognition before returning them to a low-power state. As the vehicle approaches the operational area, all required mission systems are reactivated, enabling full payload capability and, if required, establishing a low-latency operator link for supervised operation or manual mission completion.
+      </p>
+    </div>
+  </section>
+
+  <!-- Configuration Console Section -->
+  <section aria-labelledby="sec-console" style="margin-bottom: 40px;">
+    <h2 id="sec-console" style="font-size: 1.8rem; font-weight: 800; letter-spacing: -0.01em; margin-bottom: 16px;">Configuration Console</h2>
+    <p style="color: var(--muted); margin-bottom: 20px;">
+      The PDU exposes an interactive serial port console (<strong>115200 baud, 8N1</strong>) for advanced configuration, diagnostics, and serial-based control. The console supports command history (up/down arrow keys) and TAB autocompletion.
+    </p>
+    
+    <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 12px;">Available Commands</h3>
+    <ul style="margin: 10px 0; padding-left: 20px; line-height: 1.7; color: var(--muted);">
+      <li style="margin-bottom: 8px;"><code>help</code> - Shows the list of available commands.</li>
+      <li style="margin-bottom: 8px;"><code>status [N]</code> - Prints sensor telemetry. If N is specified, it refreshes automatically every N seconds until any key is pressed.</li>
+      <li style="margin-bottom: 8px;"><code>outputs</code> - Lists all switched rails, their current state, and default startup states.</li>
+      <li style="margin-bottom: 8px;"><code>set [1-6] [0|1]</code> - Sets the state of a channel immediately (e.g. <code>set 1 1</code> turns Channel 1 ON).</li>
+      <li style="margin-bottom: 8px;"><code>default [1-6] [0|1]</code> - Configures the default startup state for a rail and saves it to Flash.</li>
+      <li style="margin-bottom: 8px;"><code>mode [keep|default]</code> - Configures startup restore behavior:
+        <ul style="margin: 6px 0; padding-left: 20px; list-style-type: circle;">
+          <li><code>keep</code>: Restore rails to their last active state before power loss.</li>
+          <li><code>default</code>: Restore rails using the predefined default startup states.</li>
+        </ul>
+      </li>
+      <li style="margin-bottom: 8px;"><code>node [1-127]</code> - Changes the PDU's DroneCAN Node ID (Default: 88) and saves it to Flash.</li>
+      <li style="margin-bottom: 8px;"><code>dronecan</code> - Displays a live table of discovered active nodes on the bus.</li>
+      <li style="margin-bottom: 8px;"><code>dronecan debug</code> - Enters command logging mode to print incoming hardpoint commands.</li>
+      <li style="margin-bottom: 8px;"><code>restart</code> - Reboots the PDU.</li>
+    </ul>
+
+    <h3 style="font-size: 1.25rem; font-weight: 700; margin-top: 24px; margin-bottom: 12px;">Console Output Example</h3>
+    <pre><code>PDU&gt; status
+
+--- Sensor Readings ---
+  5V Rail (U9 - INA219)   :  5.01 V |     35 mA | 0.17 W  (EN_5V_OUT1, EN_5V_OUT2)
+  12V Rail (U8 - INA219)  :  12.00 V |     55 mA | 0.66 W  (EN_12V_OUT1, EN_12V_OUT2, EN_12V_OUT3)
+  48V Rail (U10 - INA228) :  48.22 V |    119 mA | 1.45 W  (EN_48VSW)
+
+PDU&gt;</code></pre>
+  </section>
+
+  <!-- DroneCAN Integration -->
+  <section aria-labelledby="sec-dronecan">
+    <h2 id="sec-dronecan" style="font-size: 1.8rem; font-weight: 800; letter-spacing: -0.01em; margin-bottom: 16px;">DroneCAN Integration</h2>
+    <p style="color: var(--muted); margin-bottom: 24px;">
+      The PDU operates on a DroneCAN bus accepting hardpoint commands to trigger outputs. Once connected to a Flight Controller, check that the UglyDrone PDU is present on the bus using the DroneCAN GUI tool:
+    </p>
+    
+    <div style="background: var(--bg); border: 1px solid var(--border); border-radius: 16px; padding: 20px; text-align: center; box-shadow: var(--shadow); margin-bottom: 24px;">
+      <img src="{{root}}assets/images/pdu-12s/image6.png" alt="DroneCAN GUI Tool node representation" style="max-width: 100%; height: auto; border-radius: 8px;" />
+    </div>
+
+    <p style="color: var(--muted); margin-bottom: 24px;">
+      Once visible on the bus, configure the Ardupilot relays as hardpoints:
+    </p>
+
+    <div style="background: var(--bg); border: 1px solid var(--border); border-radius: 16px; padding: 20px; text-align: center; box-shadow: var(--shadow); margin-bottom: 24px;">
+      <img src="{{root}}assets/images/pdu-12s/image1.png" alt="Ardupilot Relay configuration screenshot" style="max-width: 100%; height: auto; border-radius: 8px;" />
+    </div>
+
+    <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 16px;">Mapping of PDU Outputs to Hardpoints</h3>
+    <div class="spec-table-container">
+      <table class="spec-table" style="max-width: 480px; margin: 0 auto;">
+        <thead>
+          <tr>
+            <th>PDU Switched Output</th>
+            <th>Hardpoint Index</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>48V SW</strong></td>
+            <td>Hardpoint 0</td>
+          </tr>
+          <tr>
+            <td><strong>12V SW1</strong></td>
+            <td>Hardpoint 1</td>
+          </tr>
+          <tr>
+            <td><strong>12V SW2</strong></td>
+            <td>Hardpoint 2</td>
+          </tr>
+          <tr>
+            <td><strong>12V SW3</strong></td>
+            <td>Hardpoint 3</td>
+          </tr>
+          <tr>
+            <td><strong>5V SW1</strong></td>
+            <td>Hardpoint 4</td>
+          </tr>
+          <tr>
+            <td><strong>5V SW2</strong></td>
+            <td>Hardpoint 5</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p style="color: var(--muted); margin-top: 24px;">
+      After relays are defined, they can be used during mission planning or mapped to RC transmitter channels.
+    </p>
+    
+    <div style="margin-top: 24px; padding: 16px; border-left: 4px solid var(--accent); background: var(--card); border-radius: 0 12px 12px 0;">
+      <p style="margin: 0; font-size: 0.95rem; line-height: 1.6; color: var(--muted);">
+        <strong>Note:</strong> The PDU also transmits real-time telemetry using standard <code>uavcan.equipment.power.CircuitStatus</code> DroneCAN messages. Check your flight controller software manual for compatibility.
+      </p>
+    </div>
+  </section>
+</article>

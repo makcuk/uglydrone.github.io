@@ -7,8 +7,12 @@ const POSTS_DIR = path.join(WORKSPACE_DIR, 'posts');
 const TEMPLATES_DIR = path.join(WORKSPACE_DIR, 'templates');
 const LAYOUT_PATH = path.join(TEMPLATES_DIR, 'layout.html');
 const ABOUT_CONTENT_PATH = path.join(TEMPLATES_DIR, 'about_content.html');
+const PRODUCTS_CONTENT_PATH = path.join(TEMPLATES_DIR, 'products_content.html');
+const PRODUCT_DETAIL_CONTENT_PATH = path.join(TEMPLATES_DIR, 'product_detail_content.html');
 const INDEX_OUTPUT_PATH = path.join(WORKSPACE_DIR, 'index.html');
 const ABOUT_OUTPUT_PATH = path.join(WORKSPACE_DIR, 'about.html');
+const PRODUCTS_OUTPUT_PATH = path.join(WORKSPACE_DIR, 'products.html');
+const PRODUCTS_DIR = path.join(WORKSPACE_DIR, 'products');
 
 console.log('Starting UglyDrone static site generation...');
 
@@ -19,6 +23,14 @@ if (!fs.existsSync(LAYOUT_PATH)) {
 }
 if (!fs.existsSync(ABOUT_CONTENT_PATH)) {
   console.error(`About content not found at ${ABOUT_CONTENT_PATH}`);
+  process.exit(1);
+}
+if (!fs.existsSync(PRODUCTS_CONTENT_PATH)) {
+  console.error(`Products content not found at ${PRODUCTS_CONTENT_PATH}`);
+  process.exit(1);
+}
+if (!fs.existsSync(PRODUCT_DETAIL_CONTENT_PATH)) {
+  console.error(`Product detail content not found at ${PRODUCT_DETAIL_CONTENT_PATH}`);
   process.exit(1);
 }
 
@@ -342,13 +354,14 @@ function generateMetaTags({ title, description, url, imageUrl, type = 'website' 
 /**
  * Formats layout placeholders
  */
-function applyLayout(template, { title, content, root, meta_tags = '', activeBlog = '', activeAbout = '' }) {
+function applyLayout(template, { title, content, root, meta_tags = '', activeBlog = '', activeProducts = '', activeAbout = '' }) {
   return template
     .replace(/\{\{title\}\}/g, title)
     .replace(/\{\{content\}\}/g, content)
     .replace(/\{\{root\}\}/g, root)
     .replace(/\{\{meta_tags\}\}/g, meta_tags)
     .replace(/\{\{active_blog\}\}/g, activeBlog)
+    .replace(/\{\{active_products\}\}/g, activeProducts)
     .replace(/\{\{active_about\}\}/g, activeAbout);
 }
 
@@ -527,4 +540,51 @@ const compiledIndex = applyLayout(layoutTemplate, {
 
 fs.writeFileSync(INDEX_OUTPUT_PATH, compiledIndex);
 console.log('Successfully compiled index.html');
+
+// ----------------------------------------------------
+// 4. Build the Products Page (products.html)
+// ----------------------------------------------------
+console.log('Compiling products.html...');
+const productsContent = fs.readFileSync(PRODUCTS_CONTENT_PATH, 'utf-8');
+const compiledProducts = applyLayout(layoutTemplate, {
+  title: 'Products — UglyDrone Rugged, Modular Drone Subsystems',
+  content: productsContent,
+  root: './',
+  meta_tags: generateMetaTags({
+    title: 'Products — UglyDrone Rugged, Modular Drone Subsystems',
+    description: 'Rugged and intelligent subsystems built for high-reliability autonomous systems.',
+    url: 'products.html',
+    imageUrl: 'assets/images/pdu-12s/image9.png',
+    type: 'website'
+  }),
+  activeProducts: 'active'
+});
+fs.writeFileSync(PRODUCTS_OUTPUT_PATH, compiledProducts);
+console.log('Successfully compiled products.html');
+
+// ----------------------------------------------------
+// 5. Build Product Detail Pages (products/*.html)
+// ----------------------------------------------------
+console.log('Compiling product detail pages...');
+if (!fs.existsSync(PRODUCTS_DIR)) {
+  fs.mkdirSync(PRODUCTS_DIR);
+}
+
+const productDetailContent = fs.readFileSync(PRODUCT_DETAIL_CONTENT_PATH, 'utf-8');
+const compiledProductDetail = applyLayout(layoutTemplate, {
+  title: 'UglyDrone PDU-12S Smart Power Distribution Unit Datasheet',
+  content: productDetailContent,
+  root: '../',
+  meta_tags: generateMetaTags({
+    title: 'UglyDrone PDU-12S Smart Power Distribution Unit Datasheet',
+    description: 'Smart power distribution unit for UAVs, rovers, and autonomous robotic platforms operating from a 12S / 48V battery bus.',
+    url: 'products/uglydrone-pdu-12s.html',
+    imageUrl: 'assets/images/pdu-12s/image9.png',
+    type: 'website'
+  }),
+  activeProducts: 'active'
+});
+fs.writeFileSync(path.join(PRODUCTS_DIR, 'uglydrone-pdu-12s.html'), compiledProductDetail);
+console.log('Successfully compiled products/uglydrone-pdu-12s.html');
+
 console.log('Static site generation complete!');
