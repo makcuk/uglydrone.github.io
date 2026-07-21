@@ -63,14 +63,70 @@
 
   <hr style="border: 0; border-top: 1px solid var(--border); margin: 40px 0;" />
 
-  <!-- Pinout Section -->
+  <!-- Pinout and Dimensions Section -->
   <section aria-labelledby="sec-pinout" style="margin-bottom: 40px;">
-    <h2 id="sec-pinout" style="font-size: 1.8rem; font-weight: 800; letter-spacing: -0.01em; margin-bottom: 16px;">Pinout Diagram</h2>
-    <p style="color: var(--muted); margin-bottom: 24px;">Refer to the following diagram for the wiring specifications and pin layout of the PDU-12S:</p>
-    <div style="background: var(--bg); border: 1px solid var(--border); border-radius: 16px; padding: 20px; text-align: center; box-shadow: var(--shadow);">
-      <img src="{{root}}assets/images/pdu-12s/image2.png" alt="UglyDrone PDU-12S Pinout Diagram" style="max-width: 100%; height: auto; border-radius: 8px;" />
+    <h2 id="sec-pinout" style="font-size: 1.8rem; font-weight: 800; letter-spacing: -0.01em; margin-bottom: 16px;">Pinout and Dimensions</h2>
+    <p style="color: var(--muted); margin-bottom: 24px;">Use the switcher below to view either the board pinout diagram or the physical blueprint dimensions:</p>
+    
+    <div class="carousel-container" style="background: var(--bg); border: 1px solid var(--border); border-radius: 16px; padding: 20px; position: relative; box-shadow: var(--shadow); overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+      <!-- Carousel Slides -->
+      <div class="carousel-slide active" id="slide-pinout" style="width: 100%; text-align: center; display: block; transition: opacity 0.3s ease;">
+        <img src="{{root}}assets/images/pdu-12s/image2.png" alt="UglyDrone PDU-12S Pinout Diagram" style="max-width: 100%; height: auto; border-radius: 8px;" />
+        <div style="margin-top: 10px; font-weight: 600; color: var(--fg);">Pinout Diagram</div>
+      </div>
+      <div class="carousel-slide" id="slide-dimensions" style="width: 100%; text-align: center; display: none; transition: opacity 0.3s ease;">
+        <img src="{{root}}assets/images/pdu-12s/image10.png" alt="UglyDrone PDU-12S Board Dimensions Blueprint" style="max-width: 100%; height: auto; border-radius: 8px;" />
+        <div style="margin-top: 10px; font-weight: 600; color: var(--fg);">Board Dimensions & Blueprint</div>
+      </div>
+
+      <!-- Controls -->
+      <div class="carousel-controls" style="display: flex; gap: 14px; margin-top: 20px; align-items: center;">
+        <button type="button" class="btn btn-secondary" id="btn-prev" style="padding: 8px 16px; font-size: 0.9rem;">← Prev</button>
+        <div style="display: flex; gap: 8px;" id="carousel-indicators">
+          <span class="indicator active" data-slide="0" style="width: 10px; height: 10px; border-radius: 50%; background: var(--fg); cursor: pointer; display: inline-block;"></span>
+          <span class="indicator" data-slide="1" style="width: 10px; height: 10px; border-radius: 50%; background: var(--border); cursor: pointer; display: inline-block;"></span>
+        </div>
+        <button type="button" class="btn btn-secondary" id="btn-next" style="padding: 8px 16px; font-size: 0.9rem;">Next →</button>
+      </div>
     </div>
   </section>
+
+  <script>
+    (function() {
+      let currentSlide = 0;
+      const slides = [document.getElementById('slide-pinout'), document.getElementById('slide-dimensions')];
+      const indicators = document.querySelectorAll('#carousel-indicators .indicator');
+      
+      function showSlide(index) {
+        currentSlide = index;
+        slides.forEach((slide, idx) => {
+          if (idx === index) {
+            slide.style.display = 'block';
+            indicators[idx].style.background = 'var(--fg)';
+          } else {
+            slide.style.display = 'none';
+            indicators[idx].style.background = 'var(--border)';
+          }
+        });
+      }
+      
+      document.getElementById('btn-next').addEventListener('click', function() {
+        let next = (currentSlide + 1) % slides.length;
+        showSlide(next);
+      });
+      
+      document.getElementById('btn-prev').addEventListener('click', function() {
+        let prev = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide(prev);
+      });
+      
+      indicators.forEach((indicator, idx) => {
+        indicator.addEventListener('click', function() {
+          showSlide(idx);
+        });
+      });
+    })();
+  </script>
 
   <!-- Specifications Section -->
   <section aria-labelledby="sec-specs" style="margin-bottom: 40px;">
